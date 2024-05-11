@@ -1,18 +1,15 @@
 package fsts.ma.HealthAi.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fsts.ma.HealthAi.enums.Sex;
+import fsts.ma.HealthAi.enums.Sexe;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
 
-@Setter
-@Getter
+@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -28,7 +25,7 @@ public class Patient {
     private String password;
     private int age;
     private String tel;
-    private Sex sex;
+    private Sexe sexe;
 
     @OneToMany
     private List<Consultation> consultationList ;

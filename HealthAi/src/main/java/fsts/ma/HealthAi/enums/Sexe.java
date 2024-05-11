@@ -1,5 +1,5 @@
 package fsts.ma.HealthAi.enums;
 
-public enum Sex {
+public enum Sexe {
     HOMME, FEMME
 }

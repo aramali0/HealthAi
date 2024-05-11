@@ -10,9 +10,9 @@ import java.util.Date;
 
 @ToString
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
+@Data
+@Builder
 @AllArgsConstructor
 public class Consultation {
     @Id
