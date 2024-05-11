@@ -1,4 +1,4 @@
 package fsts.ma.HealthAi.service;
 
-public interface PatientService {
-}
+import org.springframework.security.core.userdetails.UserDetailsService;
+public interface PatientService extends UserDetailsService {}
