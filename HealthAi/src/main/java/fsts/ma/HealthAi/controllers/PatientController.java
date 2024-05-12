@@ -2,10 +2,12 @@ package fsts.ma.HealthAi.controllers;
 
 import fsts.ma.HealthAi.dto.PatientDto;
 import fsts.ma.HealthAi.entities.Analyse;
+import fsts.ma.HealthAi.entities.Consultation;
 import fsts.ma.HealthAi.entities.Patient;
 import fsts.ma.HealthAi.mappers.PatientMapper;
 import fsts.ma.HealthAi.repositories.PatientRepo;
 import fsts.ma.HealthAi.service.AnalyseService;
+import fsts.ma.HealthAi.service.ConsultationService;
 import fsts.ma.HealthAi.service.PatientService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ public class PatientController {
     private final PatientMapper patientMapper;
     private final PatientRepo patientRepo;
     private final AnalyseService analyseService;
+    private final ConsultationService consultationService;
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUserByid(@PathVariable Long id) {
@@ -73,6 +76,23 @@ public class PatientController {
             patientRepo.save(patient);
 
                 return new ResponseEntity<>("analyse added succefully",HttpStatus.OK);
+        }
+        else {
+
+            return new ResponseEntity<>("this patient not found",HttpStatus.NOT_FOUND);
+        }
+    }
+    @PostMapping("/consultation/{username}")
+    public ResponseEntity<?> addConsultationToUser(@RequestBody Consultation consultation, @PathVariable String username)
+    {
+        Patient patient = patientService.getPatientByusername(username);
+        if(patient != null )
+        {
+            consultationService.addConsultation(consultation);
+            patient.getConsultationList().add(consultation);
+            patientRepo.save(patient);
+
+                return new ResponseEntity<>("consultation added succefully",HttpStatus.OK);
         }
         else {
 
