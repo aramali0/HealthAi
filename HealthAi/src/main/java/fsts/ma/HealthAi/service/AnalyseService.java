@@ -1,5 +1,6 @@
 package fsts.ma.HealthAi.service;
 
+import fsts.ma.HealthAi.dto.AnalyseDto;
 import fsts.ma.HealthAi.entities.Analyse;
 
 import java.util.List;

@@ -1,6 +1,8 @@
 package fsts.ma.HealthAi.service.imp;
 
+import fsts.ma.HealthAi.dto.AnalyseDto;
 import fsts.ma.HealthAi.entities.Analyse;
+import fsts.ma.HealthAi.mappers.AnalyseMapper;
 import fsts.ma.HealthAi.repositories.AnalyseRepo;
 import fsts.ma.HealthAi.service.AnalyseService;
 import jakarta.websocket.server.ServerEndpoint;
@@ -28,6 +30,7 @@ public class AnalyseServiceImp implements AnalyseService {
 
     @Override
     public String addAnalyse(Analyse analyse) {
+
          analyseRepo.save(analyse);
          return "patient added successfully";
     }
