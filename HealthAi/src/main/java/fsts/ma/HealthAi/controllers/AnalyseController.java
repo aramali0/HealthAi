@@ -49,7 +49,7 @@ public class AnalyseController {
     public ResponseEntity<?> getAll()
     {
         List<Analyse> analyses = analyseService.getAllAnalyse();
-        if(analyses.isEmpty())
+        if(analyses != null)
         {
             return new ResponseEntity<>(analyses, HttpStatus.OK);
         }

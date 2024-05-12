@@ -45,10 +45,10 @@ public class ConsultationController {
  @GetMapping
     public ResponseEntity<?> getAll()
     {
-        List<Consultation> analyses = consultationService.getAllConsultation();
-        if(analyses.isEmpty())
+        List<Consultation> consultations = consultationService.getAllConsultation();
+        if(consultations != null)
         {
-            return new ResponseEntity<>(analyses, HttpStatus.OK);
+            return new ResponseEntity<>(consultations, HttpStatus.OK);
         }
         else{
             return new ResponseEntity<>("there is no Consultations here ",HttpStatus.NOT_FOUND);

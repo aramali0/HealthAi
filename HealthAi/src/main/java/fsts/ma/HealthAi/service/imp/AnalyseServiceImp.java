@@ -32,7 +32,7 @@ public class AnalyseServiceImp implements AnalyseService {
     public String addAnalyse(Analyse analyse) {
 
          analyseRepo.save(analyse);
-         return "patient added successfully";
+         return "analyse added successfully";
     }
 
     @Override
