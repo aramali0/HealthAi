@@ -1,10 +1,7 @@
 package fsts.ma.HealthAi.entities;
 
 import fsts.ma.HealthAi.enums.Role;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +14,7 @@ import lombok.Setter;
 @Entity
 public class RoleApp {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRole;
 
     @Enumerated(EnumType.STRING)

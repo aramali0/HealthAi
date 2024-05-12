@@ -20,15 +20,12 @@ public class PatientController {
     private final PatientMapper patientMapper;
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getUserByid(@PathVariable Long id)
-    {
+    public ResponseEntity<?> getUserByid(@PathVariable Long id) {
         Optional<Patient> patient = patientService.getPatient(id);
-        if(patient.isPresent())
-        {
+        if (patient.isPresent()) {
             return new ResponseEntity<>(patientMapper.fromEntity(patient.get()), HttpStatus.OK);
-        }
-        else{
-            return new ResponseEntity<>("user not found !",HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>("user not found !", HttpStatus.NOT_FOUND);
         }
     }
 
