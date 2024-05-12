@@ -28,6 +28,51 @@ public class PatientController {
             return new ResponseEntity<>("user not found !", HttpStatus.NOT_FOUND);
         }
     }
+    @GetMapping("/username/{username}")
+    public ResponseEntity<?> getUserByUser(@PathVariable String username ) {
+        Patient patient = patientService.getPatientByusername(username);
+        if (patient != null) {
+            return new ResponseEntity<>(patientMapper.fromEntity(patient), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("user not found !", HttpStatus.NOT_FOUND);
+        }
+    }
+    @GetMapping("/analyse/{username}")
+    public ResponseEntity<?> getAllAnalyses(@PathVariable String username)
+    {
+        Patient patient = patientService.getPatientByusername(username);
+        if(patient != null )
+        {
+            if(!patient.getAnalyses().isEmpty())
+            {
+                return  new ResponseEntity<>(patient.getAnalyses(),HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>("this patient doesnt has any analyses",HttpStatus.ACCEPTED);
+            }
+        }
+        else {
 
+            return new ResponseEntity<>("this patient not found",HttpStatus.NOT_FOUND);
+        }
+    }
+@GetMapping("/consultation/{username}")
+    public ResponseEntity<?> getAllConsultation(@PathVariable String username)
+    {
+        Patient patient = patientService.getPatientByusername(username);
+        if(patient !=null)
+        {
+            if(!patient.getConsultationList().isEmpty())
+            {
+                return  new ResponseEntity<>(patient.getConsultationList(),HttpStatus.OK);
+            }
+            else {
+                return new ResponseEntity<>("this patient doesnt has any consultation",HttpStatus.ACCEPTED);
+            }
+        }
+        else {
 
+            return new ResponseEntity<>("this patient not found",HttpStatus.NOT_FOUND);
+        }
+    }
 }

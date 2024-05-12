@@ -13,7 +13,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @SpringBootApplication
 @EnableConfigurationProperties(RsaKeyConfig.class)
@@ -32,6 +34,12 @@ public class HealthAiApplication implements CommandLineRunner {
 		Analyse analyse = Analyse.builder()
 				.text("something something")
 				.build();
+Analyse analyse1 = Analyse.builder()
+				.text("something something")
+				.build();
+Analyse analyse2 = Analyse.builder()
+				.text("something something")
+				.build();
 
 		Consultation consultation = Consultation.builder()
 				.conseils("some thing")
@@ -39,15 +47,48 @@ public class HealthAiApplication implements CommandLineRunner {
 				.date(new Date())
 				.summer("summarize")
 				.build();
+Consultation consultation2 = Consultation.builder()
+				.conseils("some thing")
+				.conversation("Conversation")
+				.date(new Date())
+				.summer("summarize")
+				.build();
+Consultation consultation3 = Consultation.builder()
+				.conseils("some thing")
+				.conversation("Conversation")
+				.date(new Date())
+				.summer("summarize")
+				.build();
+
+		analyseRepo.save(analyse);
+		analyseRepo.save(analyse1);
+		analyseRepo.save(analyse2);
+		consultationRepo.save(consultation);
+		consultationRepo.save(consultation2);
+		consultationRepo.save(consultation3);
+		List<Analyse> analyses = new ArrayList<>();
+		analyses.add(analyse);
+		analyses.add(analyse1);
+
+		List<Consultation> consultations = new ArrayList<>();
+		consultations.add(consultation);
+		consultations.add(consultation2);
 
 		Patient patient = Patient.builder()
 				.age(23)
 				.email("simo@gmail.com")
+				.username("simo")
+				.analyses(analyses)
+				.build();
+		Patient patient1 = Patient.builder()
+				.age(23)
+				.email("hamza@gmail.com")
+				.username("hamza")
+				.consultationList(consultations)
 				.build();
 
 		patientRepo.save(patient);
-		analyseRepo.save(analyse);
-		consultationRepo.save(consultation);
+		patientRepo.save(patient1);
 	}
 
 
