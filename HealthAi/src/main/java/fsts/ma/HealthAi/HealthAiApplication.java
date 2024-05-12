@@ -33,9 +33,11 @@ public class HealthAiApplication implements CommandLineRunner {
 
 		Analyse analyse = Analyse.builder()
 				.text("something something")
+				.name("analyse 1")
 				.build();
 Analyse analyse1 = Analyse.builder()
 				.text("something something")
+				.name("analyse2")
 				.build();
 Analyse analyse2 = Analyse.builder()
 				.text("something something")

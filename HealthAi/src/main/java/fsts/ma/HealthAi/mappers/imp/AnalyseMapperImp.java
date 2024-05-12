@@ -16,8 +16,9 @@ public class AnalyseMapperImp implements AnalyseMapper {
 
     @Override
     public Analyse fromDTO(AnalyseDto analyseDto) {
-        return new Analyse(analyseDto.id(), analyseDto.text());
+        return null;
     }
+
 
     @Override
     public AnalyseDto fromEntity(Analyse analyse) {
