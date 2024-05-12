@@ -97,6 +97,11 @@ public class PatientServiceImpl implements PatientService, UserDetailsService {
     }
 
     @Override
+    public Patient getPatientByusername(String username) {
+        return userAppRepository.findPatientByUsername(username);
+    }
+
+    @Override
     public List<Patient> getAllPatient() {
         return userAppRepository.findAll();
     }

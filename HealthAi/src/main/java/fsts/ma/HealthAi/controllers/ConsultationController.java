@@ -1,6 +1,8 @@
 package fsts.ma.HealthAi.controllers;
 
+import fsts.ma.HealthAi.dto.PatientDto;
 import fsts.ma.HealthAi.entities.Consultation;
+import fsts.ma.HealthAi.entities.Patient;
 import fsts.ma.HealthAi.mappers.ConsultationMapper;
 import fsts.ma.HealthAi.service.ConsultationService;
 import lombok.AllArgsConstructor;
@@ -54,4 +56,7 @@ public class ConsultationController {
             return new ResponseEntity<>("there is no Consultations here ",HttpStatus.NOT_FOUND);
         }
     }
+
+
+
 }

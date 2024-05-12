@@ -16,6 +16,7 @@ public interface PatientService extends UserDetailsService {
     UserDetails loadUserByUsername(String username);
 
     Optional<Patient> getPatient(Long id);
+    Patient getPatientByusername(String username);
     List<Patient> getAllPatient();
     String addPatient(PatientDto patientDto);
     String deletePatient(Long id);
