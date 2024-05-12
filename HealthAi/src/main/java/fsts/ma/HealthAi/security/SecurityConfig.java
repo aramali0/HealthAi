@@ -47,8 +47,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth-> auth
                         .requestMatchers(HttpMethod.POST,"/authentication/**").permitAll()
-                        .requestMatchers("/").hasAuthority("SCOPE_ROLE_USER")
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated()
+                )
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .cors(cors-> cors.configurationSource(corsConfigurationSource()))
                 .oauth2ResourceServer(ao -> ao.jwt(Customizer.withDefaults()))
